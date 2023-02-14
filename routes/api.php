@@ -22,4 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 //about route
-Route::apiResource('about', AboutController::class);
+Route::group(['middleware' => ['XSS', 'lang']], function () {
+    Route::apiResource('about', AboutController::class);
+});

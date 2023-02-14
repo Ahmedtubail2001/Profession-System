@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Storage;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Strong;
+use resources\lang\ar\message;
+
 
 class AboutController extends Controller
 {
@@ -18,14 +22,35 @@ class AboutController extends Controller
     public function index()
     {
         //
-        $header = About::select("*")->where("name", "header")->first();
-        $about_us = About::select("*")->where("name", "about_us")->first();
+        $header = About::select('id', 'name_' . app()->getLocale() . ' as name', 'title_' . app()->getLocale() . ' as title', 'description_' . app()->getLocale() . ' as description', 'image')->where("name_en", "header")->first();
+        $about_us = About::select('id', 'name_' . app()->getLocale() . ' as name', 'title_' . app()->getLocale() . ' as title', 'description_' . app()->getLocale() . ' as description', 'image')->where("name_en", "about_us")->first();
         $header->image = Storage::url($header->image);
         $about_us->image = Storage::url($about_us->image);
-        return response()->json([
-            "header" => $header,
-            "about_us" => $about_us
-        ]);
+
+        $structure_language_ar = [
+            "about" => trans('message.about'),
+            "header" => trans('message.header'),
+            "career guide" => trans('message.career_guide'),
+        ];
+
+        // $structure_language_ar = [
+        //     "about" => trans('message.about'),
+        //     "header" => trans('message.header'),
+        //     "career guide" => trans('message.career_guide'),
+        // ];
+
+        if (app()->getLocale() == 'en') {
+            return response()->json([
+                "header" => $header,
+                "about_us" => $about_us
+            ]);
+        } else {
+            return response()->json([
+                "header" => $header,
+                "about_us" => $about_us,
+                "lang_ar" => $structure_language_ar
+            ]);
+        }
     }
 
     /**
