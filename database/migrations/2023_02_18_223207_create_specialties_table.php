@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title_en', 45);
             $table->string('title_ar', 45);
-            $table->boolean('active')->default(false);
+            // $table->boolean('active')->default(false);
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 

@@ -21,7 +21,10 @@ return new class extends Migration
             $table->string('description_ar', 100)->nullable();
             $table->tinyInteger('allow_register');
             $table->string('professionscol', 45);
+            $table->foreign('specialtie_id')->on('specialties')->references('id')->onDelete('cascade');
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 

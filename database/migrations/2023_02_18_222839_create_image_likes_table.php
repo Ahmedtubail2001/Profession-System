@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('comment', 45);
             $table->tinyInteger('accepted');
+            $table->foreign('image_id')->on('images')->references('id')->onDelete('cascade');
+            $table->foreign('customer_id')->on('customers')->references('id')->onDelete('cascade');
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 
