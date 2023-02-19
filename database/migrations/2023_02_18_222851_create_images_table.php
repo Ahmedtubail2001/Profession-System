@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string('image_url', 100);
+            $table->integer('works_id', 100);
+            $table->tinyInteger('accepted');
+            $table->string('reject_reason', 45);
             $table->timestamps();
         });
     }

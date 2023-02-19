@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('image_likes', function (Blueprint $table) {
             $table->id();
+            $table->string('comment', 45);
+            $table->tinyInteger('accepted');
             $table->timestamps();
         });
     }

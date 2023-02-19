@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->string('comment', 45);
+            $table->string('accepted', 45);
             $table->timestamps();
         });
     }

@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->id();
+            $table->string('professional_experience', 45);
+            $table->string('cover_image', 45);
+            $table->integer('id_number');
+            $table->string('address', 45);
+            $table->integer('experience-year', 45);
+            $table->string('password', 45);
             $table->timestamps();
         });
     }
