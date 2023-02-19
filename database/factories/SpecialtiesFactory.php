@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\specialties;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SpecialtiesFactory extends Factory
 {
+    protected $model = specialties::class;
     /**
      * Define the model's default state.
      *
@@ -18,6 +20,8 @@ class SpecialtiesFactory extends Factory
     {
         return [
             //
+            'title_en' => $this->faker->jobTitle(),
+            'title_ar' => $this->faker->word()
         ];
     }
 }
