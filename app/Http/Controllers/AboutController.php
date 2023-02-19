@@ -61,8 +61,8 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // if ($request->user()->tokenCan('about.create')) {
+
+        // if ($request->user()->tokenCan('abouts.create')) {
         //     abort('403', 'not allow');
         // }
 

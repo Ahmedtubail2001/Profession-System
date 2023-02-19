@@ -20,13 +20,13 @@ class AccessTokensController extends Controller
         ]);
 
 
-        $password = Hash::make('123456');
+        // $password = Hash::make('123456');
         $user = User::where('email', $request->username)->first();
         // ->orWhere('mobile', $request->username)
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'Invalid username and password combination',
-                'pass' => $password
+                // 'pass' => $password
             ], 401);
         }
         $token = $user->createToken($request->device_name);
