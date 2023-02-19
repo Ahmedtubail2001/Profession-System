@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Api\AccessTokensController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 //about route
+// 'auth:sanctum'
 Route::group(['middleware' => ['XSS', 'lang']], function () {
     Route::apiResource('about', AboutController::class);
 });
+
+Route::Post('auth/token', [AccessTokensController::class, 'store']);

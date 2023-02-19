@@ -62,6 +62,10 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         //
+        // if ($request->user()->tokenCan('about.create')) {
+        //     abort('403', 'not allow');
+        // }
+
         $image = $request->file('image');
         // ->store('images');
         $path = "project_img/img_about/";

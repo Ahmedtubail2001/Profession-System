@@ -16,10 +16,10 @@ class CheckLangParam
      */
     public function handle(Request $request, Closure $next)
     {
-        app()->setlocale('ar');
-        if (in_array($request->lang, ['en'])) {
-            if ($request->query->has('lang') && $request->lang == 'en') {
-                app()->setlocale('en');
+        app()->setlocale('en');
+        if (in_array($request->lang, ['ar'])) {
+            if ($request->query->has('lang') && $request->lang == 'ar') {
+                app()->setlocale('ar');
             } else {
                 return response()->json([
                     "message" => "Undefined language Please select the language"
