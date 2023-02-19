@@ -19,7 +19,10 @@ return new class extends Migration
             $table->integer('works_id', 100);
             $table->tinyInteger('accepted');
             $table->string('reject_reason', 45);
+            $table->foreign('gallerie_id')->on('galleries')->references('id')->onDelete('cascade');
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 

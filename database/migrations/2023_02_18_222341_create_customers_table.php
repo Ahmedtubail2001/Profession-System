@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 45);
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 

@@ -21,7 +21,11 @@ return new class extends Migration
             $table->string('address', 45);
             $table->integer('experience-year', 45);
             $table->string('password', 45);
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
+            $table->foreign('profession_id')->on('professions')->references('id')->onDelete('cascade');
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 

@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->string('title_en', 45);
+            $table->string('detail', 45);
+            $table->tinyInteger('visible');
+            $table->foreign('worker_id')->on('workers')->references('id')->onDelete('cascade');
             $table->timestamps();
+            // $table->softDeletes();
+
         });
     }
 
